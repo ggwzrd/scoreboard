@@ -2,23 +2,15 @@ import React, { Component } from 'react'
 import './Player.sass'
 
 class Player extends Component {
-  constructor(props) {
-    super()
 
-    this.state = {
-      points: props.points
-    }
-  }
+  plusOne(){
+    const {playerId, onChange} = this.props
 
-  plusOne() {
-    this.setState({
-      points: this.state.points + 1
-    })
+    onChange(playerId)
   }
 
   render() {
-    const { avatar, name } = this.props
-    const { points } = this.state
+    const { avatar, name, points } = this.props
 
     return (
       <li className="player">
