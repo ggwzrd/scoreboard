@@ -5,7 +5,9 @@ import './App.sass'
 class App extends React.Component {
   render() {
     return (
-      <Title label="Scoreboard" />
+      <div className="app">
+        <Title label="Scoreboard" />
+      </div>
     )
   }
 }

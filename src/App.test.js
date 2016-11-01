@@ -10,13 +10,13 @@ chai.use(chaiEnzyme())
 const app = shallow(<App />)
 
 describe('<App />', () => {
-  it('contains a h1 tag', () => {
-    expect(app).to.have.tagName('h1')
+  it('contains a div tag', () => {
+    expect(app).to.have.tagName('div')
   })
 
-  it('says Hello World', () => {
-    expect(app).to.have.text('Hello World!')
-  })
+  // it('says Hello World', () => {
+  //   expect(app).to.have.text('Hello World!')
+  // })
 
   it('has a App class', () =>{
     expect(app).to.have.className('app')
