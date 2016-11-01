@@ -22,9 +22,9 @@ const players = [
   }
 ]
 
-const scoreboard = shallow(<Scoreboard players={ players } />)
-
 describe('<Scoreboard />', () => {
+  const scoreboard = shallow(<Scoreboard players={ players } />)
+
   it('has a wrapping ul tag', () => {
     expect(scoreboard).to.have.tagName('ul')
   })
@@ -36,11 +36,6 @@ describe('<Scoreboard />', () => {
   describe('players', () => {
     it('renders Players', () => {
       expect(scoreboard).to.have.descendants(Player)
-    })
-
-    it('renders both players', () => {
-      expect(scoreboard).to.contain(<Player key={0} { ...players[0] } />)
-      expect(scoreboard).to.contain(<Player key={1} { ...players[1] } />)
     })
   })
 })

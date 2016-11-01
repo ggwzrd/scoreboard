@@ -20,6 +20,16 @@ describe('<App />', () => {
     expect(app).to.have.descendants(Scoreboard)
   })
 
+  describe('plusOne()', () => {
+    const playerId = app.state('players')[0].playerId
+
+    it('updates the points of the player', () => {
+      expect(app.state('players')[0].points).to.eq(0)
+      app.instance().plusOne(playerId)
+      expect(app.state('players')[0].points).to.eq(1)
+    })
+  })
+
   it('has a App class', () =>{
     expect(app).to.have.className('app')
   })

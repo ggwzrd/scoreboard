@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Trophy from './Trophy'
 import './Player.sass'
 
 class Player extends Component {
@@ -9,8 +10,13 @@ class Player extends Component {
     onChange(playerId)
   }
 
+  deleteMe(){
+    const {onDelete, playerId} = this.props
+    onDelete(playerId)
+  }
+
   render() {
-    const { avatar, name, points } = this.props
+    const { avatar, name, points, rank } = this.props
 
     return (
       <li className="player">
@@ -18,6 +24,7 @@ class Player extends Component {
           <img src={ avatar } />
         </div>
         <div className="label">
+          <Trophy points={ points } rank={ rank } />
           <h3>
             <span className="score">{ points }</span>
             .&nbsp;
@@ -25,6 +32,7 @@ class Player extends Component {
           </h3>
         </div>
          <button onClick={ this.plusOne.bind(this) } >+1</button>
+         <button onClick={ this.deleteMe.bind(this) } > x </button>
       </li>
     )
   }
