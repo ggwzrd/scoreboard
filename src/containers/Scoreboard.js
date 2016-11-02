@@ -6,7 +6,7 @@ import './Scoreboard.sass'
 export class Scoreboard extends React.Component {
 
   renderPlayer(player, index) {
-    return <Player key={ index } { ...player } rank={ index } onChange={ this.props.plusOne } />
+    return <Player key={ index } { ...player } rank={ index } />
   }
 
   render() {

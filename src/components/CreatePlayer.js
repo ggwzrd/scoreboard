@@ -10,11 +10,7 @@ export class CreatePlayer extends Component {
     const { addPlayer } = this.props
     const name = this.refs.name.value
 
-    const newPlayer = {
-      name: name,
-      avatar: `https://api.adorable.io/avatars/285/${name}.png`,
-      points: 0
-    }
+    const newPlayer = name
     addPlayer(newPlayer)
   }
 
