@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import deletePlayer from '../actions/delete-player'
 import plusOne from '../actions/plus-one'
 import Trophy from './Trophy'
@@ -8,18 +8,17 @@ import './Player.sass'
 export class Player extends Component {
 
   plusOne(){
-    const {playerId, plusOne} = this.props
-
+    const { plusOne, playerId } = this.props
     plusOne(playerId)
   }
 
   deleteMe(){
-    const {deletePlayer, playerId, key} = this.props
+    const {deletePlayer, playerId} = this.props
     deletePlayer(playerId)
   }
 
   render() {
-    const { avatar, name, points, rank } = this.props
+    const { avatar, name, points, rank, increasePoints } = this.props
 
     return (
       <li className="player">
@@ -40,5 +39,6 @@ export class Player extends Component {
     )
   }
 }
+
 
 export default connect(null, {deletePlayer, plusOne})(Player)

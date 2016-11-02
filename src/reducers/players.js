@@ -12,7 +12,6 @@ export const nextPlayerId = (players) => {
   return players.map((p) => p.playerId).sort().reverse()[0] + 1 || 0
 }
 export const nextPlayerIdReduce = (players) => {
-  debugger
   return players.reduce((pp, np) => {
     return np.playerId > pp ? np.playerId : pp.playerId
   }, 0) + 1
@@ -28,11 +27,12 @@ export default (state = [], { type, payload } = {}) => {
         playerId: nextPlayerIdReduce(state)
       }))
 
+    case PLUS_ONE:
+      return orderPlayers(state.map((p) => p.playerId === payload ?  Object.assign({}, p, {points: p.points + 1}) : p))
+
     case DELETE_PLAYER:
       return orderPlayers(state.filter((p) => p.playerId !== payload))
 
-    case PLUS_ONE:
-      return orderPlayers(state.map((p) => p.playerId === payload ?  p.setState({points: p.points + 1}) : p))
     default :
       return state
   }
