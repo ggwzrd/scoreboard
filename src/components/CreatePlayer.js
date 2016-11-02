@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import addPlayer from '../actions/add-player'
 import './CreatePlayer.sass'
 
-class CreatePlayer extends Component {
+export class CreatePlayer extends Component {
   save(event) {
     event.preventDefault()
 
-    const { onSubmit } = this.props
+    const { addPlayer } = this.props
     const name = this.refs.name.value
 
     const newPlayer = {
@@ -13,7 +15,7 @@ class CreatePlayer extends Component {
       avatar: `https://api.adorable.io/avatars/285/${name}.png`,
       points: 0
     }
-    onSubmit(newPlayer)
+    addPlayer(newPlayer)
   }
 
   render() {
@@ -30,4 +32,4 @@ class CreatePlayer extends Component {
   }
 }
 
-export default CreatePlayer
+export default connect(null, {addPlayer})(CreatePlayer)

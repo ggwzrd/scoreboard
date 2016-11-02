@@ -3,13 +3,13 @@ import { mount } from 'enzyme'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import spies from 'chai-spies'
-import CreatePlayer from './CreatePlayer'
+import {CreatePlayer} from './CreatePlayer'
 
 chai.use(spies)
 chai.use(chaiEnzyme())
 
 const saveSpy = chai.spy()
-const form = mount(<CreatePlayer onSubmit={ saveSpy }/>)
+const form = mount(<CreatePlayer addPlayer={ saveSpy }/>)
 
 describe('<CreatePlayer />', () => {
   it('has a wrapping form tag', () => {

@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
-import Player from './Player'
+import {Player} from './Player'
 
 chai.use(chaiEnzyme())
 
@@ -34,12 +34,12 @@ describe('<Player />', () => {
 
   describe('+1 Button', () => {
     it('shows it', () => {
-      expect(player.find('button')).to.have.text('+1')
+      expect(player.find('.plusOne')).to.have.text('+1')
     })
 
     it('changes the score when we click it', () => {
       const { playerId } = playerProps
-      
+
     })
   })
 })
