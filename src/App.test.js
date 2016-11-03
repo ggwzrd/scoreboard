@@ -18,8 +18,4 @@ describe('<App />', () => {
   it('has the app class', () =>{
     expect(app).to.have.className('app')
   })
-
-  it('renders the scoreboard', () => {
-    expect(app).to.have.descendants(Scoreboard)
-  })
 })

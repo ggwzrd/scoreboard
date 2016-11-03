@@ -1,8 +1,9 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import {Player} from './Player'
+import { plusOne } from '../actions/plus-one'
 
 chai.use(chaiEnzyme())
 
@@ -28,8 +29,9 @@ describe('<Player />', () => {
   })
 
   it('renders the points and name of the player', () => {
+    const player = mount(<Player { ...playerProps } plusOne={ plusOne }/>)
     const { points, name } = playerProps
-    expect(player.find('.name')).to.have.text(name)
+    expect(player.find('.name')).to.have.text('Miriam')
   })
 
   describe('+1 Button', () => {
