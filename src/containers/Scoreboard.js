@@ -8,7 +8,7 @@ import CreatePlayer from '../components/CreatePlayer'
 export class Scoreboard extends React.Component {
 
   renderPlayer(player, index) {
-    return <Player key={ index } { ...player } rank={ index } />
+    return <Player key={ index } { ...player }/>
   }
 
   render() {

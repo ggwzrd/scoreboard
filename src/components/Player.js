@@ -4,13 +4,19 @@ import { Link } from 'react-router'
 import deletePlayer from '../actions/delete-player'
 import plusOne from '../actions/plus-one'
 import Trophy from './Trophy'
+import setTrophy from '../actions/set-trophy'
 import './Player.sass'
 
 export class Player extends Component {
 
   plusOne(){
-    const { plusOne, playerId } = this.props
+    const { setTrophy, plusOne, playerId, points } = this.props
     plusOne(playerId)
+    setTrophy(playerId, points)
+  }
+
+  trophy(){
+    return this.props.hasOwnProperty("trophy") ? this.props.trophy : ""
   }
 
   deleteMe(){
@@ -19,7 +25,7 @@ export class Player extends Component {
   }
 
   render() {
-    const { playerId, avatar, name, points, rank, increasePoints } = this.props
+    const { playerId, avatar, name, points, increasePoints } = this.props
 
     return (
       <li className="player">
@@ -27,7 +33,7 @@ export class Player extends Component {
           <img src={ avatar } />
         </div>
         <div className="label">
-          <Trophy points={ points } rank={ rank } />
+          <Trophy rank={ this.trophy() } />
           <h3>
             <span className="score">{ points }</span>
             .&nbsp;
@@ -42,4 +48,4 @@ export class Player extends Component {
 }
 
 
-export default connect(null, {deletePlayer, plusOne})(Player)
+export default connect(null, {deletePlayer, plusOne, setTrophy})(Player)
