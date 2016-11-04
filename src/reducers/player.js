@@ -1,8 +1,8 @@
-import { SET_PLAYER } from '../actions/set-player-profile'
+import { FETCH_PLAYER } from '../actions/fetch-player'
 
 export default (state = null, { type, payload } = {}) => {
   switch(type) {
-    case SET_PLAYER:
+    case FETCH_PLAYER:
       return payload
     default :
       return state

@@ -1,14 +1,23 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import setPlayerProfile from '../actions/set-player-profile'
+import api from '../middleware/api'
+import appLoading  from '../actions/loading'
+import fetchPlayer from '../actions/fetch-player'
 import Title from '../components/Title'
 
 export class PlayerProfile extends Component {
 
+  componentWillMount(){
+    this.props.appLoading(true)
+  }
   componentDidMount(){
-    const { setPlayerProfile } = this.props
+    const { fetchPlayer, appLoading } = this.props
     const { playerId } = this.props.routeParams
-    setPlayerProfile(parseInt(playerId))
+    api.get('players/'+playerId)
+    .then((player) =>{
+        fetchPlayer(player)
+        appLoading(false)
+    })
   }
 
   render() {
@@ -44,11 +53,8 @@ export class PlayerProfile extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    player: state.players.reduce((prev, next) =>  {
-      return next.playerId === state.playerProfileId ?
-        next : prev
-    }, null)
+    player: state.player
   }
 }
 
-export default connect(mapStateToProps, {setPlayerProfile})(PlayerProfile)
+export default connect(mapStateToProps, {appLoading, fetchPlayer})(PlayerProfile)
