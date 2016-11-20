@@ -1,19 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import api from '../middleware/api'
 import addPlayer from '../actions/add-player'
 import './CreatePlayer.sass'
 
 export class CreatePlayer extends Component {
 
-  // nextPlayerIdReduce(){
-  //   var d = new Date()
-  //   return parseInt("" + Math.floor((Math.random() * 100) + 1) + d.getMilliseconds())
-  // }
-
   save(event) {
     event.preventDefault()
-
     const { addPlayer } = this.props
     const name = this.refs.name.value
     const newPlayer = {
@@ -21,9 +14,8 @@ export class CreatePlayer extends Component {
       avatar: 'https://api.adorable.io/avatars/285/${name}.png',
       points: 0
     }
-    api.post('players', newPlayer)
-      .then((player) => addPlayer(player))
-      .catch((errors) => console.log(errors))
+    addPlayer(newPlayer)
+    this.refs.name.value = null
   }
 
   render() {

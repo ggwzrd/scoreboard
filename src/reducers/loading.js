@@ -7,7 +7,7 @@ export default (state = false, { type, payload } = {}) => {
 
     case APP_READY: return false
 
-    default: return status
+    default: return state
 
   }
 }

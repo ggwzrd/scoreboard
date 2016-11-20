@@ -1,11 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import appLoading  from '../actions/loading'
 import Player from '../components/Player'
 import './Scoreboard.sass'
 import Title from '../components/Title'
 import api from '../middleware/api'
 import updatePlayers  from '../actions/update-players'
-import appLoading  from '../actions/loading'
 import CreatePlayer from '../components/CreatePlayer'
 
 export class Scoreboard extends React.Component {

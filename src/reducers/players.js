@@ -14,6 +14,11 @@ export const nextPlayerId = (players) => {
   return players.map((p) => p.playerId).sort().reverse()[0] + 1 || 0
 }
 
+// nextPlayerIdReduce(){
+//   var d = new Date()
+//   return parseInt("" + Math.floor((Math.random() * 100) + 1) + d.getMilliseconds())
+// }
+
 export const assignTrophy = (players, playerId, trophy) => {
   return players.map((p) => p.playerId === playerId ? Object.assign({}, p, {trophy: trophy }) : p)
 }
@@ -23,7 +28,7 @@ export default (state = [], { type, payload } = {}) => {
     case ADD_PLAYER :
       return orderPlayers(state.concat(payload))
     case UPDATE_PLAYERS:
-      return payload
+      return orderPlayers(payload)
 
     case PLUS_ONE:
       return orderPlayers(state.map((p) => p.playerId === payload ?  Object.assign({}, p, {points: p.points + 1}) : p))

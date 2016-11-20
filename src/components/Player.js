@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import api from '../middleware/api'
 import deletePlayer from '../actions/delete-player'
 import plusOne from '../actions/plus-one'
 import Trophy from './Trophy'
@@ -12,8 +11,8 @@ export class Player extends Component {
 
   plusOne(){
     const { setTrophy, plusOne, playerId, points } = this.props
-    plusOne(playerId)
-    setTrophy(playerId, points)
+    plusOne(points, playerId)
+    setTrophy(playerId)
   }
 
   trophy(){
@@ -21,13 +20,8 @@ export class Player extends Component {
   }
 
   deleteMe(event){
-
     const {playerId, deletePlayer} = this.props
-    api.delete('players/'+playerId)
-      .then((res) => {
-        deletePlayer(playerId)
-      })
-      .catch((request, status, error) => console.log(request, status, error))
+    deletePlayer(playerId)
   }
 
   render() {
